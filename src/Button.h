@@ -44,4 +44,7 @@ class Button{
         unsigned long current_time_release = 0; // keep the time the button has been released for
         unsigned long last_time_pressed = 0;
         unsigned long last_time_release = 0;
+
+        static bool test(uint8_t n, uint32_t timeout, const bool (Button::* func)(), uint32_t current_time,  uint32_t last_time, uint8_t consecutive);
+
 };
