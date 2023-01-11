@@ -10,17 +10,18 @@ class Button{
 
         void    update();
 
-        bool    isDown();
-        bool    isUp();
+        bool    isPressed();
+        bool    isReleased();
 
         bool    onChange();
-        bool    onDown();
-        bool    onUp();
+        bool    onPress();
+        bool    onClick(uint32_t timeout = DEFAULT_CLICK_TIMEOUT); // true if the button is clicked (but false if it is held)
+        bool    onRelease();
+
         bool    onDoublePress(  uint32_t timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
         bool    onDoubleClick(  uint32_t timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
         bool    onDoubleRelease(uint32_t timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
 
-        bool        onClick(uint32_t timeout = DEFAULT_CLICK_TIMEOUT); // true if the button is clicked (but false if it is held)
         bool        onHold( uint32_t timeout = DEFAULT_HOLD_TIMEOUT); // true when the button is pressed for at least the timeout
         uint32_t    getHoldDuration(); // measure the duration of the current hold
 
@@ -38,10 +39,9 @@ class Button{
 
         uint8_t pin;
 
-        unsigned long current_time_update = 0;  // keep the time the button has been updated
-        unsigned long current_time_pressed = 0;   // keep the time the button has been clicked
-        unsigned long current_time_release = 0; // keep the time the button has been released
+        unsigned long current_time_update = 0;  // keep the time the button has been updated for
+        unsigned long current_time_pressed = 0;   // keep the time the button has been clicked for
+        unsigned long current_time_release = 0; // keep the time the button has been released for
         unsigned long last_time_pressed = 0;
         unsigned long last_time_release = 0;
-
 };

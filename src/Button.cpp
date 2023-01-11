@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "Button.h"
+#include "button.h"
 
 Button::Button(uint8_t Pin){
     pin = Pin;
@@ -11,22 +11,21 @@ void Button::update(){
 
     current_time_update = millis();
 
-    if(onDown()){
+    if(onPress()){
         last_time_pressed = current_time_pressed;
         current_time_pressed = current_time_update;
     }
     else
-    if(onUp()){
+    if(onRelease()){
         last_time_release = current_time_release;
         current_time_release = current_time_update;
     }
 }
 
-bool Button::isDown(){
+bool Button::isPressed(){
     return current_state == DOWN;
 }
-
-bool Button::isUp(){
+bool Button::isReleased(){
     return current_state == UP;
 }
 
@@ -34,23 +33,14 @@ bool Button::isUp(){
 bool Button::onChange(){
     return current_state != last_state;
 }
-
-bool Button::onDown(){
+bool Button::onPress(){
     return last_state == UP && current_state == DOWN;
 }
-
-bool Button::onUp(){
+bool Button::onRelease(){
     return last_state == DOWN && current_state == UP;
 }
-
-bool Button::onDoublePress(uint32_t timeout){
-    return onNthConsecutivePress(2, timeout);
-}
-bool Button::onDoubleClick(uint32_t timeout){
-    return onNthConsecutiveClick(2, timeout);
-}
-bool Button::onDoubleRelease(uint32_t timeout){
-    return onNthConsecutiveRelease(2, timeout);
+bool Button::onClick(uint32_t timeout){
+    return isReleased() && (current_time_release - current_time_pressed) < timeout;
 }
 
 
@@ -63,8 +53,19 @@ uint32_t Button::getHoldDuration(){
 }
 
 
+bool Button::onDoublePress(uint32_t timeout){
+    return onNthConsecutivePress(2, timeout);
+}
+bool Button::onDoubleClick(uint32_t timeout){
+    return onNthConsecutiveClick(2, timeout);
+}
+bool Button::onDoubleRelease(uint32_t timeout){
+    return onNthConsecutiveRelease(2, timeout);
+}
+
+
 bool Button::onNthConsecutivePress(uint8_t n, uint32_t timeout){
-    bool is_nth_click = (onDown() && (current_time_pressed - last_time_pressed) <= timeout);
+    bool is_nth_click = (onPress() && (current_time_pressed - last_time_pressed) <= timeout);
 
     if(is_nth_click){
         consecutive_press++;
@@ -77,7 +78,7 @@ bool Button::onNthConsecutivePress(uint8_t n, uint32_t timeout){
 }
 
 bool Button::onNthConsecutiveClick(uint8_t n, uint32_t timeout){
-    bool is_nth_click = (onUp() && (current_time_pressed - last_time_release) <= timeout);
+    bool is_nth_click = (onRelease() && (current_time_pressed - last_time_release) <= timeout);
 
     if(is_nth_click){
         consecutive_click++;
@@ -90,7 +91,7 @@ bool Button::onNthConsecutiveClick(uint8_t n, uint32_t timeout){
 }
 
 bool Button::onNthConsecutiveRelease(uint8_t n, uint32_t timeout){
-    bool is_nth_click = (onUp() && (current_time_release - last_time_release) <= timeout);
+    bool is_nth_click = (onRelease() && (current_time_release - last_time_release) <= timeout);
 
     if(is_nth_click){
         consecutive_release++;
