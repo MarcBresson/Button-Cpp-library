@@ -48,4 +48,6 @@ class Button{
         uint8_t     consecutive_press   = 0; // count the number of consecutive presses (number of presses separated by at most the timeout)
         uint8_t     consecutive_click   = 0; // count the number of consecutive clicks (number of clicks separated by at most the timeout)
         uint8_t     consecutive_release = 0; // count the number of consecutive releases (number of releases separated by at most the timeout)
+
+        STATE getCurrentState();
 };

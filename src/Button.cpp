@@ -7,7 +7,7 @@ Button::Button(uint8_t Pin){
 
 void Button::update(){
     last_state = current_state;
-    current_state = digitalRead(pin) ? DOWN : UP;
+    current_state = getCurrentState();
 
     current_time_update = millis();
 
@@ -20,6 +20,10 @@ void Button::update(){
         last_time_release = current_time_release;
         current_time_release = current_time_update;
     }
+}
+
+Button::STATE Button::getCurrentState(){
+    current_state = digitalRead(pin) ? DOWN : UP;
 }
 
 bool Button::isPressed(){
