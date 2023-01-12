@@ -24,13 +24,13 @@ class Button{
         bool    onDoubleRelease(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
         bool    onDoubleClick(  unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
 
-        bool    onNthConsecutivePress(     uint8_t n, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
-        bool    onNthConsecutiveClick(     uint8_t n, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
-        bool    onNthConsecutiveRelease(   uint8_t n, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onNthConsecutivePress(     uint8_t N, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onNthConsecutiveClick(     uint8_t N, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onNthConsecutiveRelease(   uint8_t N, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
         
-        uint8_t getNumberConsecutivePresses();
-        uint8_t getNumberConsecutiveReleases();
-        uint8_t getNumberConsecutiveClicks();
+        uint8_t getNumberConsecutivePresses( unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        uint8_t getNumberConsecutiveReleases(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        uint8_t getNumberConsecutiveClicks(  unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
 
     private:
         enum STATE {DOWN, UP};

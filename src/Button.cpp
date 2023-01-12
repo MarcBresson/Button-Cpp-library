@@ -68,51 +68,55 @@ bool Button::onDoubleRelease(unsigned long timeout){
 }
 
 
-bool Button::onNthConsecutivePress(uint8_t n, unsigned long timeout){
-    bool is_nth_click = (onPress() && (current_time_pressed - last_time_pressed) <= timeout);
+bool Button::onNthConsecutivePress(uint8_t N, unsigned long timeout){
+    getNumberConsecutivePresses(timeout);
 
-    if(is_nth_click){
+    return consecutive_press >= N;
+}
+bool Button::onNthConsecutiveRelease(uint8_t N, unsigned long timeout){
+    getNumberConsecutiveReleases(timeout);
+
+    return consecutive_release >= N;
+}
+bool Button::onNthConsecutiveClick(uint8_t N, unsigned long timeout){
+    getNumberConsecutiveClicks(timeout);
+
+    return consecutive_click >= N;
+}
+
+uint8_t Button::getNumberConsecutivePresses(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT){
+    bool is_consecutive_press = (onPress() && (current_time_pressed - last_time_pressed) <= timeout);
+
+    if(is_consecutive_press){
         consecutive_press++;
     }
     if(current_time_pressed - last_time_pressed <= timeout){
         consecutive_press = 0;
     }
 
-    return consecutive_press >= n;
+    return consecutive_press;
 }
+uint8_t Button::getNumberConsecutiveReleases(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT){
+    bool is_consecutive_release = (onRelease() && (current_time_release - last_time_release) <= timeout);
 
-bool Button::onNthConsecutiveClick(uint8_t n, unsigned long timeout){
-    bool is_nth_click = (onRelease() && (current_time_pressed - last_time_release) <= timeout);
-
-    if(is_nth_click){
-        consecutive_click++;
-    }
-    if(current_time_pressed - last_time_release <= timeout){
-        consecutive_click = 0;
-    }
-
-    return consecutive_click >= n;
-}
-
-bool Button::onNthConsecutiveRelease(uint8_t n, unsigned long timeout){
-    bool is_nth_click = (onRelease() && (current_time_release - last_time_release) <= timeout);
-
-    if(is_nth_click){
+    if(is_consecutive_release){
         consecutive_release++;
     }
     if(current_time_release - last_time_release <= timeout){
         consecutive_release = 0;
     }
 
-    return consecutive_release >= n;
-}
-
-uint8_t Button::getNumberConsecutivePresses(){
-    return consecutive_press;
-}
-uint8_t Button::getNumberConsecutiveReleases(){
     return consecutive_release;
 }
-uint8_t Button::getNumberConsecutiveClicks(){
+uint8_t Button::getNumberConsecutiveClicks(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT){
+    bool is_consecutive_click = (onRelease() && (current_time_pressed - last_time_release) <= timeout);
+
+    if(is_consecutive_click){
+        consecutive_click++;
+    }
+    if(current_time_pressed - last_time_release <= timeout){
+        consecutive_click = 0;
+    }
+
     return consecutive_click;
 }
