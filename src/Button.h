@@ -2,9 +2,9 @@
 
 class Button{
     public:
-        static const uint32_t DEFAULT_CLICK_TIMEOUT   = 500;   // second
-        static const uint32_t DEFAULT_DOUBLECLICK_TIMEOUT   = 1000;   // second
-        static const uint32_t DEFAULT_HOLD_TIMEOUT          = 1000;   // second
+        static const unsigned long DEFAULT_CLICK_TIMEOUT   = 500;   // second
+        static const unsigned long DEFAULT_DOUBLECLICK_TIMEOUT   = 1000;   // second
+        static const unsigned long DEFAULT_HOLD_TIMEOUT          = 1000;   // second
 
         Button(uint8_t Pin);
 
@@ -16,17 +16,17 @@ class Button{
         bool    onChange();
         bool    onPress();
         bool    onRelease();
-        bool    onClick(uint32_t timeout = DEFAULT_CLICK_TIMEOUT); // true if the button is clicked
-        bool    onHold( uint32_t timeout = DEFAULT_HOLD_TIMEOUT); // true when the button is pressed for at least the timeout
-        uint32_t    getPressDuration(); // measure the duration of the current hold
+        bool    onClick(unsigned long timeout = DEFAULT_CLICK_TIMEOUT); // true if the button is clicked
+        bool    onHold( unsigned long timeout = DEFAULT_HOLD_TIMEOUT); // true when the button is pressed for at least the timeout
+        unsigned long    getPressDuration(); // measure the duration of the current hold
 
-        bool    onDoublePress(  uint32_t timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
-        bool    onDoubleRelease(uint32_t timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
-        bool    onDoubleClick(  uint32_t timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onDoublePress(  unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onDoubleRelease(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onDoubleClick(  unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
 
-        bool    onNthConsecutivePress(     uint8_t n, uint32_t timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
-        bool    onNthConsecutiveClick(     uint8_t n, uint32_t timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
-        bool    onNthConsecutiveRelease(   uint8_t n, uint32_t timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onNthConsecutivePress(     uint8_t n, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onNthConsecutiveClick(     uint8_t n, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onNthConsecutiveRelease(   uint8_t n, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
         
         uint8_t getNumberConsecutivePresses();
         uint8_t getNumberConsecutiveReleases();

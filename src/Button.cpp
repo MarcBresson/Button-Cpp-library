@@ -39,32 +39,32 @@ bool Button::onPress(){
 bool Button::onRelease(){
     return last_state == DOWN && current_state == UP;
 }
-bool Button::onClick(uint32_t timeout){
+bool Button::onClick(unsigned long timeout){
     return isReleased() && (current_time_release - current_time_pressed) < timeout;
 }
 
 
-bool Button::onHold(uint32_t timeout){
+bool Button::onHold(unsigned long timeout){
     return getPressDuration() > timeout;
 }
 
-uint32_t Button::getPressDuration(){
+unsigned long Button::getPressDuration(){
     return current_time_update - current_time_pressed;
 }
 
 
-bool Button::onDoublePress(uint32_t timeout){
+bool Button::onDoublePress(unsigned long timeout){
     return onNthConsecutivePress(2, timeout);
 }
-bool Button::onDoubleClick(uint32_t timeout){
+bool Button::onDoubleClick(unsigned long timeout){
     return onNthConsecutiveClick(2, timeout);
 }
-bool Button::onDoubleRelease(uint32_t timeout){
+bool Button::onDoubleRelease(unsigned long timeout){
     return onNthConsecutiveRelease(2, timeout);
 }
 
 
-bool Button::onNthConsecutivePress(uint8_t n, uint32_t timeout){
+bool Button::onNthConsecutivePress(uint8_t n, unsigned long timeout){
     bool is_nth_click = (onPress() && (current_time_pressed - last_time_pressed) <= timeout);
 
     if(is_nth_click){
@@ -77,7 +77,7 @@ bool Button::onNthConsecutivePress(uint8_t n, uint32_t timeout){
     return consecutive_press >= n;
 }
 
-bool Button::onNthConsecutiveClick(uint8_t n, uint32_t timeout){
+bool Button::onNthConsecutiveClick(uint8_t n, unsigned long timeout){
     bool is_nth_click = (onRelease() && (current_time_pressed - last_time_release) <= timeout);
 
     if(is_nth_click){
@@ -90,7 +90,7 @@ bool Button::onNthConsecutiveClick(uint8_t n, uint32_t timeout){
     return consecutive_click >= n;
 }
 
-bool Button::onNthConsecutiveRelease(uint8_t n, uint32_t timeout){
+bool Button::onNthConsecutiveRelease(uint8_t n, unsigned long timeout){
     bool is_nth_click = (onRelease() && (current_time_release - last_time_release) <= timeout);
 
     if(is_nth_click){
