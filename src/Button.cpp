@@ -102,3 +102,13 @@ bool Button::onNthConsecutiveRelease(uint8_t n, unsigned long timeout){
 
     return consecutive_release >= n;
 }
+
+uint8_t Button::getNumberConsecutivePresses(){
+    return consecutive_press;
+}
+uint8_t Button::getNumberConsecutiveReleases(){
+    return consecutive_release;
+}
+uint8_t Button::getNumberConsecutiveClicks(){
+    return consecutive_click;
+}

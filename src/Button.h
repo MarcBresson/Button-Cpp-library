@@ -45,7 +45,7 @@ class Button{
         unsigned long last_time_pressed = 0;
         unsigned long last_time_release = 0;
 
-        uint8_t     consecutive_press   = 0; // count the number of consecutive press (number of presses separated by at most the timeout)
-        uint8_t     consecutive_click   = 0; // count the number of consecutive click (number of clicks separated by at most the timeout)
-        uint8_t     consecutive_release = 0; // count the number of consecutive release (number of releases separated by at most the timeout)
+        uint8_t     consecutive_press   = 0; // count the number of consecutive presses (number of presses separated by at most the timeout)
+        uint8_t     consecutive_click   = 0; // count the number of consecutive clicks (number of clicks separated by at most the timeout)
+        uint8_t     consecutive_release = 0; // count the number of consecutive releases (number of releases separated by at most the timeout)
 };
