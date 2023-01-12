@@ -45,10 +45,10 @@ bool Button::onClick(uint32_t timeout){
 
 
 bool Button::onHold(uint32_t timeout){
-    return getHoldDuration() > timeout;
+    return getPressDuration() > timeout;
 }
 
-uint32_t Button::getHoldDuration(){
+uint32_t Button::getPressDuration(){
     return current_time_update - current_time_pressed;
 }
 
@@ -91,18 +91,14 @@ bool Button::onNthConsecutiveClick(uint8_t n, uint32_t timeout){
 }
 
 bool Button::onNthConsecutiveRelease(uint8_t n, uint32_t timeout){
-    test(n, timeout, Button::onRelease, current_time_release, last_time_release, consecutive_release);
-}
+    bool is_nth_click = (onRelease() && (current_time_release - last_time_release) <= timeout);
 
-bool Button::test(uint8_t n, uint32_t timeout, const bool (Button::* func)(),  uint32_t current_time,  uint32_t last_time, uint8_t consecutive){
-    bool is_nth_action = (func() && (current_time - last_time) <= timeout);
-
-    if(is_nth_action){
-        consecutive++;
+    if(is_nth_click){
+        consecutive_release++;
     }
-    if(current_time - last_time <= timeout){
-        consecutive = 0;
+    if(current_time_release - last_time_release <= timeout){
+        consecutive_release = 0;
     }
 
-    return consecutive >= n;
+    return consecutive_release >= n;
 }
