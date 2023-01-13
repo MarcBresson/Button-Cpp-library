@@ -8,9 +8,14 @@
 
 This library provide an object to handle physical buttons for embedded systems.
 
+See [Arduino's documentation](https://docs.arduino.cc/built-in-examples/digital/Button) on how to wire a button.
+
+![Alt text](ressources/circuit%20button.png)
+
 # Simple example
 
 ```cpp
+#include <Arduino.h>
 #include "button.h"
 
 Button button1;
@@ -20,58 +25,63 @@ void setup(){
 }
 
 void loop(){
-    button1.update(); // you must update button's state
+    button1.update(); // updates the button's state
 
     if(button1.onClick()){
-        // action on click
+        Serial.println("Button clicked !");
     } else if (button1.onHold(2000)){
-        // action on hold (pressed for at least 2000ms)
+        Serial.println("Button held for more than 2s.");
     }
 }
 ```
 
 # Documentation
 
-## Single events
+## update
+
+```cpp
+void update();
+```
+Compute the current state of the button.
 
 ![Single events detailed schema](ressources/single%20events.png)
 
-### isPressed
+## isPressed
 
 ```cpp
 bool isPressed();
 ```
 Returns true if the button is being pressed.
 
-### isReleased
+## isReleased
 
 ```cpp
 bool isReleased();
 ```
 Returns true if the button is not being pressed.
 
-### onChange
+## onChange
 
 ```cpp
 bool onChange();
 ```
 Returns true if the button's state just changed.
 
-### onPress
+## onPress
 
 ```cpp
 bool onPress();
 ```
 Returns true if the button has just been pressed.
 
-### onRelease
+## onRelease
 
 ```cpp
 bool onRelease();
 ```
 Returns true if the button has just been released.
 
-### onClick
+## onClick
 
 ```cpp
 bool onClick(unsigned long timeout);
@@ -80,7 +90,7 @@ Returns true if a click has just been registered. A click is a combination of a 
 
 default timeout: 1s.
 
-### onHold
+## onHold
 
 ```cpp
 bool onHold(unsigned long timeout);
@@ -89,78 +99,74 @@ Returns true if the button has been held for at least `timeout`. You can't chain
 
 default timeout: 1s.
 
-### getPressDuration
+## getPressDuration
 
 ```cpp
 unsigned long getPressDuration();
 ```
 Returns how long the button was pressed, in ms.
 
-## Double events
-
 ![Double events detailed schema](ressources/Double%20events.png)
 
-### onDoublePress
+## onDoublePress
 
 ```cpp
 bool onDoublePress(unsigned long timeout);
 ```
 Returns true if the button has just been double pressed. See [Consecutive actions computation](#consecutive-actions-computation).
 
-### onDoubleRelease
+## onDoubleRelease
 
 ```cpp
 bool onDoubleRelease(unsigned long timeout);
 ```
 Returns true if the button has just been double released. See [Consecutive actions computation](#consecutive-actions-computation).
 
-### onDoubleClick
+## onDoubleClick
 
 ```cpp
 bool onDoubleClick(unsigned long timeout);
 ```
 Returns true if the button has just been double clicked. See [Consecutive actions computation](#consecutive-actions-computation).
 
-## Nth Consecutive events
-
 ![Nth consecutive events detailed schema](ressources/Nth%20consecutive%20actions%20event.png)
 
-### onNthConsecutivePress
+## onNthConsecutivePress
 
 ```cpp
 bool onNthConsecutivePress(uint8_t N, unsigned long timeout);
 ```
 Returns true if the button has just been pressed N time in a row. Each press must be separated by at most `timeout`. See [Consecutive actions computation](#consecutive-actions-computation).
 
-### onNthConsecutiveRelease
+## onNthConsecutiveRelease
 
 ```cpp
 bool onNthConsecutiveRelease(uint8_t N, unsigned long timeout);
 ```
 Returns true if the button has just been released N time in a row. Each release must be separated by at most `timeout`. See [Consecutive actions computation](#consecutive-actions-computation).
 
-### onNthConsecutiveClick
+## onNthConsecutiveClick
 
 ```cpp
 bool onNthConsecutiveClick(uint8_t N, unsigned long timeout);
 ```
 Returns true if the button has just been clicked N time in a row. Each click must be separated by at most `timeout`. See [Consecutive actions computation](#consecutive-actions-computation).
 
-### getNumberConsecutivePresses
+## getNumberConsecutivePresses
 
 ```cpp
 uint8_t getNumberConsecutivePresses(unsigned long timeout);
 ```
 Returns the consecutive number of times the button has been pressed. See [Consecutive actions computation](#consecutive-actions-computation).
 
-### getNumberConsecutiveReleases
+## getNumberConsecutiveReleases
 
 ```cpp
 uint8_t getNumberConsecutiveReleases(unsigned long timeout);
 ```
 Returns the consecutive number of times the button has been released. See [Consecutive actions computation](#consecutive-actions-computation).
 
-### getNumberConsecutiveClicks
+## getNumberConsecutiveClicks
 
 ```cpp
 uint8_t getNumberConsecutiveClicks(unsigned long timeout);
