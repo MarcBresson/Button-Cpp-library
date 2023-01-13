@@ -28,9 +28,9 @@ class Button{
         bool    onNthConsecutiveClick(     uint8_t N, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
         bool    onNthConsecutiveRelease(   uint8_t N, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
         
-        uint8_t getNumberConsecutivePresses( unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
-        uint8_t getNumberConsecutiveReleases(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
-        uint8_t getNumberConsecutiveClicks(  unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        uint8_t computeNumberOfConsecutivePresses( unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        uint8_t computeNumberOfConsecutiveReleases(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        uint8_t computeNumberOfConsecutiveClicks(  unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
 
     private:
         enum STATE {DOWN, UP};
@@ -45,9 +45,12 @@ class Button{
         unsigned long last_time_pressed = 0;
         unsigned long last_time_release = 0;
 
-        uint8_t     consecutive_press   = 0; // count the number of consecutive presses (number of presses separated by at most the timeout)
-        uint8_t     consecutive_click   = 0; // count the number of consecutive clicks (number of clicks separated by at most the timeout)
-        uint8_t     consecutive_release = 0; // count the number of consecutive releases (number of releases separated by at most the timeout)
+        uint8_t     consecutive_press   = 0; // count the number of consecutive presses
+        uint8_t     consecutive_click   = 0; // count the number of consecutive clicks
+        uint8_t     consecutive_release = 0; // count the number of consecutive releases
+        uint8_t     previous_consecutive_press   = 0; // count the number of consecutive presses
+        uint8_t     previous_consecutive_click   = 0; // count the number of consecutive clicks
+        uint8_t     previous_consecutive_release = 0; // count the number of consecutive releases
 
         STATE getCurrentState();
 };

@@ -155,21 +155,21 @@ Returns true if the button has just been clicked N time in a row. Each click mus
 ## getNumberConsecutivePresses
 
 ```cpp
-uint8_t getNumberConsecutivePresses(unsigned long timeout);
+uint8_t computeNumberOfConsecutivePresses(unsigned long timeout);
 ```
 Returns the consecutive number of times the button has been pressed. See [Consecutive actions computation](#consecutive-actions-computation).
 
 ## getNumberConsecutiveReleases
 
 ```cpp
-uint8_t getNumberConsecutiveReleases(unsigned long timeout);
+uint8_t computeNumberOfConsecutiveReleases(unsigned long timeout);
 ```
 Returns the consecutive number of times the button has been released. See [Consecutive actions computation](#consecutive-actions-computation).
 
 ## getNumberConsecutiveClicks
 
 ```cpp
-uint8_t getNumberConsecutiveClicks(unsigned long timeout);
+uint8_t computeNumberOfConsecutiveClicks(unsigned long timeout);
 ```
 Returns the consecutive number of times the button has been clicked. See [Consecutive actions computation](#consecutive-actions-computation).
 
