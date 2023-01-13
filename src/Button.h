@@ -3,8 +3,8 @@
 class Button{
     public:
         static const unsigned long DEFAULT_CLICK_TIMEOUT   = 500;   // second
-        static const unsigned long DEFAULT_DOUBLECLICK_TIMEOUT   = 1000;   // second
-        static const unsigned long DEFAULT_HOLD_TIMEOUT          = 1000;   // second
+        static const unsigned long DEFAULT_DOUBLECLICK_TIMEOUT   = 500;   // second
+        static const unsigned long DEFAULT_HOLD_TIMEOUT          = 700;   // second
 
         Button(uint8_t Pin);
 
