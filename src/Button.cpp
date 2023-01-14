@@ -23,7 +23,7 @@ void Button::update(){
 }
 
 Button::STATE Button::getCurrentState(){
-    current_state = digitalRead(pin) ? DOWN : UP;
+    return digitalRead(pin) ? DOWN : UP;
 }
 
 bool Button::isPressed(){
@@ -87,7 +87,7 @@ bool Button::onNthConsecutiveClick(uint8_t N, unsigned long timeout){
     return previous_consecutive_click >= N && consecutive_press == 0;
 }
 
-uint8_t Button::computeNumberOfConsecutivePresses(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT){
+uint8_t Button::computeNumberOfConsecutivePresses(unsigned long timeout){
     bool is_consecutive_press = (onPress() && (current_time_pressed - last_time_pressed) <= timeout);
 
     if(is_consecutive_press){
@@ -99,7 +99,7 @@ uint8_t Button::computeNumberOfConsecutivePresses(unsigned long timeout = DEFAUL
 
     return consecutive_press;
 }
-uint8_t Button::computeNumberOfConsecutiveReleases(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT){
+uint8_t Button::computeNumberOfConsecutiveReleases(unsigned long timeout){
     bool is_consecutive_release = (onRelease() && (current_time_release - last_time_release) <= timeout);
 
     if(is_consecutive_release){
@@ -111,7 +111,7 @@ uint8_t Button::computeNumberOfConsecutiveReleases(unsigned long timeout = DEFAU
 
     return consecutive_release;
 }
-uint8_t Button::computeNumberOfConsecutiveClicks(unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT){
+uint8_t Button::computeNumberOfConsecutiveClicks(unsigned long timeout){
     bool is_consecutive_click = (onRelease() && (current_time_pressed - last_time_release) <= timeout);
 
     if(is_consecutive_click){
