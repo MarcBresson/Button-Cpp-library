@@ -1,3 +1,5 @@
+#ifndef ButtonLibrary
+#define ButtonLibrary
 #include <stdint.h>
 
 class Button{
@@ -54,3 +56,4 @@ class Button{
 
         STATE getCurrentState();
 };
+#endif
