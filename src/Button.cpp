@@ -1,7 +1,13 @@
 #include <Arduino.h>
 #include "button.h"
 
+Button::Button(){}
+
 Button::Button(uint8_t Pin){
+    pin = Pin;
+}
+
+void Button::setPin(uint8_t Pin){
     pin = Pin;
 }
 

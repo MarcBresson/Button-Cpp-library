@@ -8,7 +8,10 @@ class Button{
         static const unsigned long DEFAULT_DOUBLECLICK_TIMEOUT   = 500;   // second
         static const unsigned long DEFAULT_HOLD_TIMEOUT          = 700;   // second
 
+        Button();
         Button(uint8_t Pin);
+
+        void setPin(uint8_t Pin);
 
         void    update();
 
