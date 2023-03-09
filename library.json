@@ -1,0 +1,22 @@
+{
+    "name": "button",
+    "version": "1.0.0",
+    "description": "provides an object to handle physical buttons for embedded systems.",
+    "keywords": "button",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/MarcBresson/Button-Cpp-library"
+    },
+    "authors":
+    [
+      {
+        "name": "Marc Bresson",
+        "url": "https://github.com/MarcBresson"
+      }
+    ],
+    "license": "EUPL-1.2",
+    "homepage": "https://github.com/MarcBresson/Button-Cpp-library",
+    "frameworks": "arduino",
+    "platforms": "*"
+}
