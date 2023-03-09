@@ -6,7 +6,7 @@
     </p>
 </div>
 
-This library provide an object to handle physical buttons for embedded systems.
+This library provides an object to handle physical buttons for embedded systems.
 
 See [Arduino's documentation](https://docs.arduino.cc/built-in-examples/digital/Button) on how to wire a button.
 
