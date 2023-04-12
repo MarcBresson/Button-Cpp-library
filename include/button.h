@@ -10,6 +10,7 @@ class Button{
 
         Button();
         Button(uint8_t Pin);
+        Button(uint8_t Pin, bool pull_up);
 
         void setPin(uint8_t Pin);
 
@@ -41,6 +42,7 @@ class Button{
         enum STATE {DOWN, UP};
         STATE current_state;
         STATE last_state;
+        bool inverted = false;
 
         uint8_t pin;
 

@@ -7,9 +7,15 @@ Button::Button(uint8_t Pin){
     pin = Pin;
 }
 
+Button::Button(uint8_t Pin, bool pull_up){
+    pin = Pin;
+    inverted = pull_up;
+}
+
 void Button::setPin(uint8_t Pin){
     pin = Pin;
 }
+
 
 void Button::update(){
     last_state = current_state;
@@ -29,7 +35,11 @@ void Button::update(){
 }
 
 Button::STATE Button::getCurrentState(){
-    return digitalRead(pin) ? UP : DOWN;
+    if(digitalRead(pin)){
+        return inverted ? DOWN : UP;
+    } else {
+        return inverted ? UP : DOWN;
+    }
 }
 
 bool Button::isPressed(){
