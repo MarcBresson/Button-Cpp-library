@@ -61,5 +61,7 @@ class Button{
         uint8_t     previous_consecutive_release = 0; // count the number of consecutive releases
 
         STATE getCurrentState();
+        STATE getDownState();
+        STATE getUpState();
 };
 #endif

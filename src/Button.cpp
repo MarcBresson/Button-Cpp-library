@@ -16,6 +16,13 @@ void Button::setPin(uint8_t Pin){
     pin = Pin;
 }
 
+Button::STATE Button::getDownState(){
+    return inverted ? UP : DOWN;
+}
+
+Button::STATE Button::getUpState(){
+    return inverted ? DOWN : UP;
+}
 
 void Button::update(){
     last_state = current_state;
@@ -51,9 +58,9 @@ void Button::reset(){
 
 Button::STATE Button::getCurrentState(){
     if(digitalRead(pin)){
-        return inverted ? DOWN : UP;
+        return getUpState();
     } else {
-        return inverted ? UP : DOWN;
+        return getDownState();
     }
 }
 
