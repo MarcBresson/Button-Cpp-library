@@ -42,6 +42,9 @@ void Button::update(){
 }
 
 void Button::reset(){
+    current_state = getDownState();
+    last_state = getDownState();
+
     current_time_update = 0;
     current_time_pressed = 0;
     current_time_release = 0;
