@@ -90,12 +90,12 @@ Returns true if a click has just been registered. A click is a combination of a 
 
 default timeout: 1s.
 
-## onHold
+## isHeld
 
 ```cpp
-bool onHold(unsigned long timeout);
+bool isHeld(unsigned long timeout);
 ```
-Returns true if the button has been held for at least `timeout`. You can't chain different onHold if;elif with different timeout because it would only register the hold event with the lowest timeout. If you want to have different actions associated with different timeouts, see `hold_actions` example in the `examples` folder.
+Returns true if the button has been held for at least `timeout`. If you want to have different actions associated with different timeouts, see `hold_actions` example in the `examples` folder.
 
 default timeout: 1s.
 

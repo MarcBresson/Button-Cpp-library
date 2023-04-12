@@ -93,7 +93,7 @@ bool Button::onClick(unsigned long timeout){
 }
 
 
-bool Button::onHold(unsigned long timeout){
+bool Button::isHeld(unsigned long timeout){
     return getPressDuration() > timeout;
 }
 

@@ -24,7 +24,7 @@ class Button{
         bool    onPress();
         bool    onRelease();
         bool    onClick(unsigned long timeout = DEFAULT_CLICK_TIMEOUT); // true if the button is clicked
-        bool    onHold( unsigned long timeout = DEFAULT_HOLD_TIMEOUT); // true when the button is pressed for at least the timeout
+        bool    isHeld( unsigned long timeout = DEFAULT_HOLD_TIMEOUT); // true when the button is pressed for at least the timeout
         unsigned long    getPressDuration(); // measure the duration of the current hold
 
         bool    onDoublePress(  unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
