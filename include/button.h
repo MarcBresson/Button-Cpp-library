@@ -15,6 +15,7 @@ class Button{
         void setPin(uint8_t Pin);
 
         void    update();
+        void    reset();
 
         bool    isPressed();
         bool    isReleased();

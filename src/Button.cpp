@@ -34,6 +34,21 @@ void Button::update(){
     }
 }
 
+void Button::reset(){
+    current_time_update = 0;
+    current_time_pressed = 0;
+    current_time_release = 0;
+    last_time_pressed = 0;
+    last_time_release = 0;
+
+    consecutive_press   = 0;
+    consecutive_click   = 0;
+    consecutive_release = 0;
+    previous_consecutive_press   = 0;
+    previous_consecutive_click   = 0;
+    previous_consecutive_release = 0;
+}
+
 Button::STATE Button::getCurrentState(){
     if(digitalRead(pin)){
         return inverted ? DOWN : UP;
