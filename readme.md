@@ -12,29 +12,6 @@ See [Arduino's documentation](https://docs.arduino.cc/built-in-examples/digital/
 
 ![Alt text](ressources/circuit%20button.png)
 
-# Simple example
-
-```cpp
-#include <Arduino.h>
-#include "button.h"
-
-Button button1;
-
-void setup(){
-
-}
-
-void loop(){
-    button1.update(); // updates the button's state
-
-    if(button1.onClick()){
-        Serial.println("Button clicked !");
-    } else if (button1.onHold(2000)){
-        Serial.println("Button held for more than 2s.");
-    }
-}
-```
-
 # Documentation
 
 ## update
