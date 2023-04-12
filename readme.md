@@ -19,7 +19,7 @@ See [Arduino's documentation](https://docs.arduino.cc/built-in-examples/digital/
 ```cpp
 void update();
 ```
-Compute the current state of the button.
+Compute the current state of the button. It is required to update a button state before any other function for them to work properly.
 
 ![Single events detailed schema](ressources/single%20events.png)
 
