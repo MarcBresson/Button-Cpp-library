@@ -29,7 +29,7 @@ void Button::update(){
 }
 
 Button::STATE Button::getCurrentState(){
-    return digitalRead(pin) ? DOWN : UP;
+    return digitalRead(pin) ? UP : DOWN;
 }
 
 bool Button::isPressed(){
