@@ -1,15 +1,19 @@
 #include <Arduino.h>
 #include "button.h"
 
-Button::Button(){}
+Button::Button(){
+    reset();
+}
 
 Button::Button(uint8_t Pin){
     setPin(Pin);
+    reset();
 }
 
 Button::Button(uint8_t Pin, bool pull_up){
     setPin(Pin);
     inverted = pull_up;
+    reset();
 }
 
 void Button::setPin(uint8_t Pin){
