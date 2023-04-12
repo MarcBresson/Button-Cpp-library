@@ -4,11 +4,11 @@
 Button::Button(){}
 
 Button::Button(uint8_t Pin){
-    pin = Pin;
+    setPin(Pin);
 }
 
 Button::Button(uint8_t Pin, bool pull_up){
-    pin = Pin;
+    setPin(Pin);
     inverted = pull_up;
 }
 
