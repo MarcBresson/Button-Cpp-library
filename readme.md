@@ -21,6 +21,13 @@ void update();
 ```
 Compute the current state of the button. It is required to update a button state before any other function for them to work properly.
 
+## reset
+
+```cpp
+void reset();
+```
+Reset the timers, the counters and the states of a button.
+
 ![Single events detailed schema](ressources/single%20events.png)
 
 ## isPressed
