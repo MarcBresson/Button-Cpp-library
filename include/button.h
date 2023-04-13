@@ -23,7 +23,7 @@ class Button{
         bool    onChange();
         bool    onPress();
         bool    onRelease();
-        bool    onClick(unsigned long timeout = DEFAULT_CLICK_TIMEOUT); // true if the button is clicked
+        bool    onClick(unsigned long timeout = DEFAULT_CLICK_TIMEOUT, unsigned long delay = 0);
         bool    isHeld( unsigned long timeout = DEFAULT_HOLD_TIMEOUT); // true when the button is pressed for at least the timeout
         unsigned long    getPressDuration(); // measure the duration of the current hold
 
@@ -32,7 +32,7 @@ class Button{
         bool    onDoubleClick(  unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
 
         bool    onNthConsecutivePress(     uint8_t N, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
-        bool    onNthConsecutiveClick(     uint8_t N, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
+        bool    onNthConsecutiveClick(     uint8_t N, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT, unsigned long delay = 0);
         bool    onNthConsecutiveRelease(   uint8_t N, unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);
         
         uint8_t computeNumberOfConsecutivePresses( unsigned long timeout = DEFAULT_DOUBLECLICK_TIMEOUT);

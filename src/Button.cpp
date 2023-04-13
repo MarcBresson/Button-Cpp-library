@@ -88,8 +88,12 @@ bool Button::onPress(){
 bool Button::onRelease(){
     return last_state == DOWN && current_state == UP;
 }
-bool Button::onClick(unsigned long timeout){
-    return isReleased() && (current_time_release - current_time_pressed) < timeout;
+bool Button::onClick(unsigned long timeout, unsigned long delay){
+    return (
+        isReleased()
+        && (current_time_release - current_time_pressed) < timeout
+        && (current_time_update - current_time_release) >= delay
+    );
 }
 
 
@@ -125,11 +129,14 @@ bool Button::onNthConsecutiveRelease(uint8_t N, unsigned long timeout){
 
     return previous_consecutive_release >= N && consecutive_press == 0;
 }
-bool Button::onNthConsecutiveClick(uint8_t N, unsigned long timeout){
+bool Button::onNthConsecutiveClick(uint8_t N, unsigned long timeout, unsigned long delay){
     previous_consecutive_click = consecutive_click;
     computeNumberOfConsecutiveClicks(timeout);
 
-    return previous_consecutive_click >= N && consecutive_press == 0;
+    return (
+        previous_consecutive_click >= N && consecutive_press == 0
+        && (current_time_update - current_time_release) >= delay
+    );
 }
 
 uint8_t Button::computeNumberOfConsecutivePresses(unsigned long timeout){
