@@ -12,7 +12,7 @@ See [Arduino's documentation](https://docs.arduino.cc/built-in-examples/digital/
 
 ![Alt text](ressources/circuit%20button.png)
 
-# Click you interact with and their code example
+# Buttons you interact with and their code example
 
 ## Windows file explorer ([examples/windows_file_explorer.cpp](examples/windows_file_explorer.cpp))
 - left click on windows is a `onPress()` event.
@@ -90,11 +90,12 @@ Returns true if the button has just been released.
 ## onClick
 
 ```cpp
-bool onClick(unsigned long timeout);
+bool onClick(unsigned long timeout, unsigned long delay);
 ```
-Returns true if a click has just been registered. A click is a combination of a press then a release in a certain amount of time.
+Returns true if a click has just been registered. A click is a combination of a press then a release in a certain amount of time. A delay can be set for the event triggering to discriminate between a doubleClick and a single click (see [the Youtube video viewer example](#youtube-video-viewer-examplesyoutube_video_playercpp)).
 
-default timeout: 1s.
+default timeout: 1000ms.
+default delay: 0ms.
 
 ## isHeld
 
@@ -103,7 +104,7 @@ bool isHeld(unsigned long timeout);
 ```
 Returns true while the button is held for at least `timeout`.
 
-default timeout: 1s.
+default timeout: 1000ms.
 
 ## getPressDuration
 
