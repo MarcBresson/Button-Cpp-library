@@ -19,7 +19,7 @@ See [Arduino's documentation](https://docs.arduino.cc/built-in-examples/digital/
 - right click on windows is a `onRelease()` event.
 - opening a file or folder on windows is a `onDoubleRelease()` event.
 
-## Android home screen
+## Android home screen ([examples/android_home_screen.cpp](examples/android_home_screen.cpp))
 - opening an app on your smartphone is a `onClick(1000)` event.
 - opening the "quick actions" panel for an app on android is a `isHeld(1000)` event.
 - moving an app icon on android is a `isHeld(2000)` event.
