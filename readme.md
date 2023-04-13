@@ -94,7 +94,7 @@ bool onClick(unsigned long timeout, unsigned long delay);
 ```
 Returns true if a click has just been registered. A click is a combination of a press then a release in a certain amount of time. A delay can be set for the event triggering to discriminate between a doubleClick and a single click (see [the Youtube video viewer example](#youtube-video-viewer-examplesyoutube_video_playercpp)).
 
-default timeout: 1000ms.
+default timeout: 500ms.
 default delay: 0ms.
 
 ## isHeld
@@ -104,7 +104,7 @@ bool isHeld(unsigned long timeout);
 ```
 Returns true while the button is held for at least `timeout`.
 
-default timeout: 1000ms.
+default timeout: 700ms.
 
 ## getPressDuration
 
@@ -122,6 +122,8 @@ bool onDoublePress(unsigned long timeout);
 ```
 Returns true if the button has just been double pressed. See [Consecutive actions computation](#consecutive-actions-computation).
 
+default timeout: 500ms.
+
 ## onDoubleRelease
 
 ```cpp
@@ -129,12 +131,16 @@ bool onDoubleRelease(unsigned long timeout);
 ```
 Returns true if the button has just been double released. See [Consecutive actions computation](#consecutive-actions-computation).
 
+default timeout: 500ms.
+
 ## onDoubleClick
 
 ```cpp
 bool onDoubleClick(unsigned long timeout);
 ```
 Returns true if the button has just been double clicked. See [Consecutive actions computation](#consecutive-actions-computation).
+
+default timeout: 500ms.
 
 ![Nth consecutive events detailed schema](ressources/Nth%20consecutive%20actions%20event.png)
 
@@ -145,6 +151,8 @@ bool onNthConsecutivePress(uint8_t N, unsigned long timeout);
 ```
 Returns true if the button has just been pressed N time in a row. Each press must be separated by at most `timeout`. See [Consecutive actions computation](#consecutive-actions-computation).
 
+default timeout: 500ms.
+
 ## onNthConsecutiveRelease
 
 ```cpp
@@ -152,12 +160,19 @@ bool onNthConsecutiveRelease(uint8_t N, unsigned long timeout);
 ```
 Returns true if the button has just been released N time in a row. Each release must be separated by at most `timeout`. See [Consecutive actions computation](#consecutive-actions-computation).
 
+default timeout: 500ms.
+
 ## onNthConsecutiveClick
 
 ```cpp
-bool onNthConsecutiveClick(uint8_t N, unsigned long timeout);
+bool onNthConsecutiveClick(uint8_t N, unsigned long timeout, unsigned long delay);
 ```
-Returns true if the button has just been clicked N time in a row. Each click must be separated by at most `timeout`. See [Consecutive actions computation](#consecutive-actions-computation).
+See [Consecutive actions computation](#consecutive-actions-computation).
+
+Returns true if the button has just been clicked N time in a row. Each click must be separated by at most `timeout`. A delay can be set for the event triggering to discriminate between a doubleClick and a single click (see [the Youtube video viewer example](#youtube-video-viewer-examplesyoutube_video_playercpp)).
+
+default timeout: 500ms.
+default delay: 0ms.
 
 ## getNumberConsecutivePresses
 
@@ -166,6 +181,8 @@ uint8_t computeNumberOfConsecutivePresses(unsigned long timeout);
 ```
 Returns the consecutive number of times the button has been pressed. See [Consecutive actions computation](#consecutive-actions-computation).
 
+default timeout: 500ms.
+
 ## getNumberConsecutiveReleases
 
 ```cpp
@@ -173,12 +190,16 @@ uint8_t computeNumberOfConsecutiveReleases(unsigned long timeout);
 ```
 Returns the consecutive number of times the button has been released. See [Consecutive actions computation](#consecutive-actions-computation).
 
+default timeout: 500ms.
+
 ## getNumberConsecutiveClicks
 
 ```cpp
 uint8_t computeNumberOfConsecutiveClicks(unsigned long timeout);
 ```
 Returns the consecutive number of times the button has been clicked. See [Consecutive actions computation](#consecutive-actions-computation).
+
+default timeout: 500ms.
 
 # Note
 
