@@ -79,7 +79,7 @@ default timeout: 1s.
 ```cpp
 bool isHeld(unsigned long timeout);
 ```
-Returns true while the button is held for at least `timeout`. If you want to have different actions in regard of how long the button *was* held, see the `hold_actions` example in the `examples` folder.
+Returns true while the button is held for at least `timeout`.
 
 default timeout: 1s.
 
