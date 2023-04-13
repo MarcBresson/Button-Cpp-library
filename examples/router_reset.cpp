@@ -1,33 +1,24 @@
-/*
-this example shows how to execute different actions in regard of how long
-the button is being pressed.
-
-If you have a single status LED and multiple actions associated with
-a button, you could use this example to notify the user what action
-will be executed if he releases the button.
-*/
-
 #include "button.h"
 
-Button button1;
+Button reset_button;
 
 void setup(){
 
 }
 
 void loop(){
-    button1.update();
+    reset_button.update();
 
-    if (button1.isHeld(10000)){
+    if (reset_button.isHeld(10000)){
         // LED starts blinking red
-    } else if(button1.isHeld(5000)){
+    } else if(reset_button.isHeld(5000)){
         // LED starts blinking yellow
-    } else if(button1.isHeld(3000)){
+    } else if(reset_button.isHeld(3000)){
         // LED starts blinking blue
     }
 
-    if (button1.onRelease()){
-        uint32_t press_duration = button1.getPressDuration();
+    if (reset_button.onRelease()){
+        uint32_t press_duration = reset_button.getPressDuration();
 
         if(press_duration > 10000){
             // Action red executed
