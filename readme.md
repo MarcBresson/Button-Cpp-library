@@ -24,7 +24,7 @@ See [Arduino's documentation](https://docs.arduino.cc/built-in-examples/digital/
 - opening the "quick actions" panel for an app on android is a `isHeld(1000)` event.
 - moving an app icon on android is a `isHeld(2000)` event.
 
-## Youtube video viewer
+## Youtube video viewer ([examples/youtube_video_player.cpp](examples/youtube_video_player.cpp))
 - bringing the media control is a `click(500, 200)` event.
 - seeking in the video is a `isHeld(500)` event.
 - fast-forwarding a youtube video is a `onDoubleClick(200)` event (notice that the timeout here has the same value as the onClick delay).
