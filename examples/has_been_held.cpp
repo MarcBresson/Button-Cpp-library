@@ -1,3 +1,8 @@
+/*
+this example shows how to execute different actions in regard of how long
+the button has been pressed for.
+*/
+
 #include <Arduino.h>
 #include "button.h"
 
