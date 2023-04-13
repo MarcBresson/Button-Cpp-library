@@ -14,7 +14,7 @@ See [Arduino's documentation](https://docs.arduino.cc/built-in-examples/digital/
 
 # Click you interact with and their code example
 
-## Windows file explorer
+## Windows file explorer ([examples/windows_file_explorer.cpp](examples/windows_file_explorer.cpp))
 - left click on windows is a `onPress()` event.
 - right click on windows is a `onRelease()` event.
 - opening a file or folder on windows is a `onDoubleRelease()` event.
