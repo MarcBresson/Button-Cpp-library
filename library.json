@@ -1,6 +1,6 @@
 {
     "name": "button",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "provides an object to handle physical buttons for embedded systems.",
     "keywords": "button",
     "repository":
